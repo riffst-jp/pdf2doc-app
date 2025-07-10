@@ -38,8 +38,10 @@ function createWindow() {
         },
         minWidth: 600,
         minHeight: 400,
-        titleBarStyle: 'hidden',
-        ...(process.platform !== 'darwin' ? { titleBarOverlay: true } : {}),
+        ...(process.platform === 'darwin' ? {
+            titleBarStyle: 'hidden',
+            // titleBarOverlay: true
+        } : {}),
         vibrancy: 'fullscreen-ui',
     })
 
