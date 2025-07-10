@@ -2,6 +2,8 @@
 
 注釈をフラット化し、PDFファイルにページ番号を追加するElectronアプリケーションです。
 
+![PDF2Doc App Screenshot](asset/screenshot.png)
+
 ## 機能
 
 ### 主要機能
