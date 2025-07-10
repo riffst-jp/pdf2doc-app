@@ -1,0 +1,42 @@
+{
+  "cSpell.ignorePaths": [
+    ".vscode",
+    "node_modules",
+    "build",
+    "public",
+    "src/app/globals.css",
+    "package-lock.json",
+    "pnpm-lock.yaml",
+    "pnpm-workspace.yaml",
+    ".gitignore",
+    "vite.config.ts",
+    "electron-builder.json5",
+    "src/components/ui",
+  ],
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.patterns": {
+    "tsconfig.json": "tsconfig.*.json, env.d.ts",
+    "vite.config.*": "jsconfig*, vitest.config.*, cypress.config.*, playwright.config.*",
+    "package.json": "package-lock.json, pnpm*, .yarnrc*, yarn*, .oxlint*, oxlint*",
+    "*.tsx": "${capture}.ts, ${capture}.test.ts, ${capture}.stories.tsx",
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
+    "source.organizeImports": "explicit"
+  },
+  "editor.formatOnSave": true,
+  "typescript.format.semicolons": "remove",
+  "javascript.format.semicolons": "remove",
+  "files.exclude": {
+    "**/.github": true
+  },
+  "tailwindCSS.rootFontSize": 13,
+  "cSpell.words": [
+    "Annots",
+    "cmaps",
+    "gswin",
+    "NOPAUSE",
+    "Pdfs",
+    "pdfwrite"
+  ]
+}
