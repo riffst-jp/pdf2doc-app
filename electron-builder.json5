@@ -6,10 +6,13 @@
   productName: "pdf2doc",
   directories: {
     output: "release/${version}",
+    buildResources: "build",
   },
+  icon: "build/icon.png",
   files: ["dist", "dist-electron"],
   mac: {
     target: ["dmg"],
+    icon: "build/icon.icns",
     artifactName: "${productName}-Mac-${version}-Installer.${ext}",
   },
   win: {
