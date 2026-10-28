@@ -18,6 +18,9 @@
       },
     ],
     icon: "build/icon.icns",
+    // 証明書なしのアドホック署名（未署名だとApple Siliconで「壊れている」扱いになるため）
+    identity: "-",
+    hardenedRuntime: false,
     artifactName: "${productName}-Mac-${version}-${arch}-Installer.${ext}",
   },
   win: {
