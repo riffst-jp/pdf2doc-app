@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "allowTrailingCommas": true,
+  "trailingComma": "all",
+  "arrowParens": "avoid",
+  "semi": false,
+  "sortImports": {
+    "groups": [
+      "type",
+      "builtin",
+      "external",
+      ["internal", "subpath"],
+      ["parent", "sibling", "index"],
+      "style",
+      "unknown"
+    ]
+  },
+  "sortPackageJson": { "sortScripts": true },
+  "sortTailwindcss": {
+    "functions": ["clsx", "cn", "cva", "tw"],
+    "stylesheet": "./src/index.css"
+  }
+}

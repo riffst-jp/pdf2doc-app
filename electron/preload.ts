@@ -1,7 +1,7 @@
-import { contextBridge, ipcRenderer } from 'electron'
+import { contextBridge, ipcRenderer } from "electron"
 
 // --------- Expose some API to the Renderer process ---------
-contextBridge.exposeInMainWorld('ipcRenderer', {
+contextBridge.exposeInMainWorld("ipcRenderer", {
     on(...args: Parameters<typeof ipcRenderer.on>) {
         const [channel, listener] = args
         return ipcRenderer.on(channel, (event, ...args) => listener(event, ...args))
@@ -24,7 +24,8 @@ contextBridge.exposeInMainWorld('ipcRenderer', {
 })
 
 // Ghostscript機能を公開
-contextBridge.exposeInMainWorld('ghostscript', {
-    flattenPdf: (inputPath: string) => ipcRenderer.invoke('flatten-pdf-with-ghostscript', inputPath),
-    isAvailable: () => ipcRenderer.invoke('check-ghostscript-available'),
+contextBridge.exposeInMainWorld("ghostscript", {
+    flattenPdf: (inputPath: string) =>
+        ipcRenderer.invoke("flatten-pdf-with-ghostscript", inputPath),
+    isAvailable: () => ipcRenderer.invoke("check-ghostscript-available"),
 })

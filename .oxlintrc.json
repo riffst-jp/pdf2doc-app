@@ -1,0 +1,83 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript",
+    "react",
+    "react-perf",
+    "vitest",
+    "node",
+    "eslint",
+    "oxc",
+    "promise",
+    "import"
+  ],
+  "options": { "typeAware": true, "typeCheck": true },
+  "rules": {
+    // oxc
+    "no-unused-vars": [
+      "warn",
+      {
+        "args": "none",
+        "vars": "all",
+        "fix": {
+          "imports": "safe-fix",
+          "variables": "suggestion"
+        },
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "no-unused-expressions": ["warn", { "allowTernary": true }],
+
+    // TypeScript
+    "typescript/consistent-type-exports": "warn",
+    "typescript/no-floating-promises": "warn",
+    "typescript/explicit-function-return-type": ["error", { "allowExpressions": true }],
+
+    // Import
+    "import/consistent-type-specifier-style": "warn",
+    "import/no-empty-named-blocks": "warn",
+    "import/no-cycle": ["error", { "maxDepth": 3 }],
+    "import/no-duplicates": "warn",
+
+    // React
+    "react/forward-ref-uses-ref": "warn",
+    "react/jsx-fragments": "warn",
+    "react/jsx-no-useless-fragment": "warn",
+    "react/no-unescaped-entities": "warn",
+    "react/no-unknown-property": "warn",
+    "react/self-closing-comp": "warn",
+    "react/exhaustive-deps": "warn",
+    "react/jsx-curly-brace-presence": [
+      "error",
+      {
+        "props": "never",
+        "children": "never",
+        "propElementValues": "always"
+      }
+    ],
+
+    // React Hooks
+    "react-hooks/rules-of-hooks": "warn",
+    "react-hooks/exhaustive-deps": "warn",
+
+    // React Perf
+    "react-perf/jsx-no-jsx-as-prop": "warn",
+    "react-perf/jsx-no-new-object-as-prop": "warn",
+    "react-perf/jsx-no-new-array-as-prop": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx", "packages/primitives/examples/**/*.ts"],
+      "rules": {
+        "typescript/explicit-function-return-type": ["off"]
+      }
+    },
+    {
+      "files": ["**/*.stories.tsx"],
+      "rules": {
+        "typescript/no-floating-promises": ["off"]
+      }
+    }
+  ]
+}
