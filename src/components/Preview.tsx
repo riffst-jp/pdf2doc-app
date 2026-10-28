@@ -1,4 +1,7 @@
 import { ChevronLeft, ChevronRight, File, FileStack, ZoomIn, ZoomOut } from "lucide-react"
+// `?url` の default export は Vite が付与するため oxlint からは見えない
+// oxlint-disable-next-line import/default
+import workerSrc from "pdfjs-dist/build/pdf.worker.min.mjs?url"
 import { useMemo, useState } from "react"
 import { Document, Page, pdfjs } from "react-pdf"
 import { DocumentCallback } from "react-pdf/dist/shared/types.js"
@@ -10,7 +13,7 @@ import { ViewMode } from "@/types"
 import { Progress } from "./ui/progress"
 import { ToggleGroup, ToggleGroupItem } from "./ui/toggle-group"
 
-pdfjs.GlobalWorkerOptions.workerSrc = "./pdf.worker.min.mjs"
+pdfjs.GlobalWorkerOptions.workerSrc = workerSrc
 
 const DEFAULT_PROGRESS = { current: 0, total: 0 }
 
