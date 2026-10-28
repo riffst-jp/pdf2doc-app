@@ -19,10 +19,10 @@ export interface PdfSection {
 }
 
 export interface PagePosition {
-    horizontal: 'left' | 'center' | 'right'
-    vertical: 'top' | 'center' | 'bottom'
+    horizontal: "left" | "center" | "right"
+    vertical: "top" | "center" | "bottom"
 }
 
-export type DocumentOrientation = 'portrait' | 'landscape' | 'auto'
+export type DocumentOrientation = "portrait" | "landscape" | "auto"
 
-export type ViewMode = 'singlePage' | 'multiPage'
+export type ViewMode = "singlePage" | "multiPage"

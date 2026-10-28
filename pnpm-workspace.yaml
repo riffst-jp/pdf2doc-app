@@ -1,4 +1,5 @@
-onlyBuiltDependencies:
-  - '@tailwindcss/oxide'
-  - electron
-  - esbuild
+allowBuilds:
+  "@tailwindcss/oxide": true
+  electron: true
+  electron-winstaller: true
+  esbuild: true

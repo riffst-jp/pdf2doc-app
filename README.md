@@ -7,6 +7,7 @@
 ## 機能
 
 ### 主要機能
+
 - **PDFファイルのアップロードと管理**: 複数のPDFファイルをセクションとして管理
 - **ページ番号の自動追加**: カスタマイズ可能なフォーマットでページ番号を追加
 - **セクション間の空白ページ追加**: セクション間に空白ページを挿入
@@ -15,24 +16,29 @@
 - **リアルタイムプレビュー**: 処理結果をリアルタイムでプレビュー
 
 ### ページ番号設定
+
 - **カスタムフォーマット**: `{section}-{page}`形式でページ番号をカスタマイズ
 - **位置調整**: 水平・垂直位置を自由に設定
 - **フォントサイズ**: ページ番号のフォントサイズを調整
 - **余白設定**: ページ番号の余白を調整
 
 ### レイアウト設定
+
 - **向きの制御**: 自動/縦向き/横向きの選択
 - **空白ページ**: セクション間の空白ページ追加オプション
 
 ## 必要な環境
 
 ### Node.js
+
 - Node.js 18.0.0以上
 
 ### Ghostscript（フラット化機能を使用する場合）
+
 PDFの注釈をフラット化する機能を使用するには、Ghostscriptをインストールする必要があります。
 
 #### macOS
+
 ```bash
 # Homebrewを使用
 brew install ghostscript
@@ -42,17 +48,20 @@ sudo port install ghostscript
 ```
 
 #### Windows
+
 1. [Ghostscript公式サイト](https://www.ghostscript.com/releases/gsdnld.html)からインストーラーをダウンロード
 2. インストーラーを実行
 3. システム環境変数PATHにGhostscriptのbinディレクトリを追加
 
 #### Linux (Ubuntu/Debian)
+
 ```bash
 sudo apt-get update
 sudo apt-get install ghostscript
 ```
 
 #### Linux (CentOS/RHEL/Fedora)
+
 ```bash
 # CentOS/RHEL
 sudo yum install ghostscript
@@ -64,16 +73,19 @@ sudo dnf install ghostscript
 ## インストールと実行
 
 ### 依存関係のインストール
+
 ```bash
 pnpm install
 ```
 
 ### 開発モードで実行
+
 ```bash
 pnpm dev
 ```
 
 ### ビルド
+
 ```bash
 pnpm build
 ```
@@ -81,11 +93,13 @@ pnpm build
 ### アプリケーションのパッケージ化
 
 #### 全プラットフォーム
+
 ```bash
 pnpm pack
 ```
 
 #### 特定のプラットフォーム
+
 ```bash
 # macOS
 pnpm pack:mac
@@ -137,12 +151,14 @@ pnpm pack:all
 - `{page}`: ページ番号
 
 **例:**
+
 - `{section}-{page}` → `1-1`, `1-2`, `2-1`, `2-2`
 - `Section {section} Page {page}` → `Section 1 Page 1`, `Section 1 Page 2`
 
 ## 技術スタック
 
 ### フロントエンド
+
 - **React 19**: 最新のReactフレームワーク
 - **TypeScript**: 型安全な開発
 - **Vite**: 高速なビルドツール
@@ -151,16 +167,19 @@ pnpm pack:all
 - **Lucide React**: アイコンライブラリ
 
 ### PDF処理
+
 - **pdf-lib**: PDFの作成・編集
 - **pdfjs-dist**: PDFの表示・プレビュー
 - **react-pdf**: PDFビューアーコンポーネント
 - **Ghostscript**: 注釈のフラット化
 
 ### デスクトップ
+
 - **Electron**: クロスプラットフォームデスクトップアプリケーション
 - **electron-builder**: アプリケーションのパッケージ化
 
 ### 開発ツール
+
 - **ESLint**: コード品質管理
 - **pnpm**: 高速なパッケージマネージャー
 
@@ -199,17 +218,20 @@ pdf2doc-app/
 ### 開発環境のセットアップ
 
 1. リポジトリをクローン
+
 ```bash
 git clone <repository-url>
 cd pdf2doc-app
 ```
 
 2. 依存関係をインストール
+
 ```bash
 pnpm install
 ```
 
 3. 開発サーバーを起動
+
 ```bash
 pnpm dev
 ```
@@ -267,6 +289,7 @@ pnpm pack
 ## 更新履歴
 
 ### v0.0.0
+
 - 初期リリース
 - PDFページ番号追加機能
 - 注釈フラット化機能
