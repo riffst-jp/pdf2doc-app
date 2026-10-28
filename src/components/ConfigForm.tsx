@@ -38,9 +38,7 @@ function FormGroup({ title, children }: { title: string; children: React.ReactNo
           className={`h-4 w-4 transition-transform duration-200 ${open ? "-rotate-90" : ""}`}
         />
       </CollapsibleTrigger>
-      <CollapsibleContent
-        className={`overflow-hidden transition-all duration-100 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down`}
-      >
+      <CollapsibleContent className="overflow-hidden transition-all duration-100 data-[state=closed]:animate-collapsible-up data-[state=open]:animate-collapsible-down">
         <div className="mt-2 space-y-3 rounded-md border bg-white p-3">{children}</div>
       </CollapsibleContent>
     </Collapsible>
@@ -110,7 +108,7 @@ export function ConfigForm({ settings, onSettingsChange, ghostscriptAvailable }:
           </Label>
           <Switch
             id="flatten-annotations"
-            checked={settings.flattenAnnotations}
+            checked={settings.flattenAnnotations && ghostscriptAvailable !== false}
             disabled={ghostscriptAvailable === false}
             onCheckedChange={checked => onSettingsChange({ flattenAnnotations: checked })}
           />

@@ -27,6 +27,25 @@ const DEFAULT_CONFIGS: GeneralConfig = {
   autoUpdate: true,
 }
 
+const CONFIG_STORAGE_KEY = "pdf2doc-config"
+
+// 保存済みの設定を読み込み、デフォルト値とマージする
+function loadConfig(): GeneralConfig {
+  try {
+    const stored = localStorage.getItem(CONFIG_STORAGE_KEY)
+    if (!stored) return DEFAULT_CONFIGS
+    const parsed = JSON.parse(stored) as Partial<GeneralConfig>
+    return {
+      ...DEFAULT_CONFIGS,
+      ...parsed,
+      pagePosition: { ...DEFAULT_CONFIGS.pagePosition, ...parsed.pagePosition },
+    }
+  } catch (error) {
+    console.warn("設定の読み込みに失敗しました:", error)
+    return DEFAULT_CONFIGS
+  }
+}
+
 async function addPageNumber(
   config: GeneralConfig,
   pdfDoc: PDFDocument,
@@ -111,7 +130,7 @@ async function addPageNumber(
 }
 
 function App() {
-  const [config, setConfig] = useState<GeneralConfig>(DEFAULT_CONFIGS)
+  const [config, setConfig] = useState<GeneralConfig>(loadConfig)
   const [sections, setSections] = useState<PdfSection[]>([])
   const [isProcessing, setIsProcessing] = useState(false)
   const isProcessingRef = useRef(false)
@@ -240,11 +259,19 @@ function App() {
     link.click()
   }, [previewPdf])
 
+  // 設定が変更されたら保存
+  useEffect(() => {
+    try {
+      localStorage.setItem(CONFIG_STORAGE_KEY, JSON.stringify(config))
+    } catch (error) {
+      console.warn("設定の保存に失敗しました:", error)
+    }
+  }, [config])
+
   useEffect(() => {
     const checkGhostscript = async () => {
       const available = await isGhostscriptAvailable()
       setGhostscriptAvailable(available)
-      if (!available) setConfig(prev => ({ ...prev, flattenAnnotations: false }))
     }
     void checkGhostscript()
   }, [])
